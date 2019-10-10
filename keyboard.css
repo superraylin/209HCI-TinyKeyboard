@@ -1,0 +1,45 @@
+.keyboard {
+    
+    left: 0;
+    bottom: 0;
+    height: 2cm;
+    width: 2cm;
+    padding: 5px 0;
+    user-select: none;
+    transition: bottom 0.4s;
+
+}
+
+.keyboard_keys {
+    text-align: center;
+}
+
+.keyboard_key {
+    
+    height: 25.19px;
+    width: 25.19px;
+    margin: -1.5px;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    
+}
+
+.www {
+    left: 0;
+    bottom: 0;
+    height: 2cm;
+    width: 2cm;
+    padding: 5px 0;
+    background: #004134;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+}
