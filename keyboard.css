@@ -2,8 +2,8 @@
     
     left: 0;
     bottom: 0;
-    height: 2cm;
-    width: 2cm;
+    height: 90px;
+    width: 100px;
     padding: 5px 0;
     user-select: none;
     transition: bottom 0.4s;
@@ -16,8 +16,8 @@
 
 .keyboard_key {
     
-    height: 25.19px;
-    width: 25.19px;
+    height: 30px;
+    width: 33.33px;
     margin: -1.5px;
     font-size: 1rem;
     outline: none;
@@ -35,8 +35,8 @@
 .www {
     left: 0;
     bottom: 0;
-    height: 2cm;
-    width: 2cm;
+    height: 90px;
+    width: 102px;
     padding: 5px 0;
     background: #004134;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
