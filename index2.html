@@ -7,22 +7,22 @@
     <body>
         
         <h1>Tiny Keyboard</h1>
-        <textarea style="top: 130px; right: 30px; width: 300px;"></textarea>
+        <textarea id = "txt_area" style="top: 130px; right: 30px; width: 300px;"></textarea>
             <div class="keyboard">
                 <div class="keyboard_keys">
-                    <button type="button" id = "button_abc" onmousedown = "showabc()" onmouseup = "restoreabc()" class="keyboard_key">abc</button>
-                    <button type="button" class="keyboard_key">def</button>
-                    <button type="button" class="keyboard_key">ghi</button>
-                    <button type="button" class="keyboard_key">jkl</button>
-                    <button type="button" class="keyboard_key">mn</button>
-                    <button type="button" class="keyboard_key">opq</button>
-                    <button type="button" class="keyboard_key">rst</button>
-                    <button type="button" class="keyboard_key">uvw</button>
-                    <button type="button" class="keyboard_key">xyz</button>
+                    <button type="button" class="keyboard_key" id = "button_abc" onmousedown = "showabc()" onmouseup = "restoreabc(e)" onmousemove = "xy_report(event)">abc</button>
+                    <button type="button" class="keyboard_key" id = "button_def" onmousedown = "showdef()" onmouseup = "restoredef()" onmousemove = "xy_report(event)">def</button>
+                    <button type="button" class="keyboard_key" id = "button_ghi" onmousedown = "showghi()" onmouseup = "restoreghi()" onmousemove = "xy_report(event)">ghi</button>
+                    <button type="button" class="keyboard_key" id = "button_jkl" onmousedown = "showjkl()" onmouseup = "restorejkl()" onmousemove = "xy_report(event)">jkl</button>
+                    <button type="button" class="keyboard_key" id = "button_mn"  onmousedown = "showmn()"  onmouseup = "restoremn()"  onmousemove = "xy_report(event)">mn</button>
+                    <button type="button" class="keyboard_key" id = "button_opq" onmousedown = "showopq()" onmouseup = "restoreopq()" onmousemove = "xy_report(event)">opq</button>
+                    <button type="button" class="keyboard_key" id = "button_rst" onmousedown = "showrst()" onmouseup = "restorerst()" onmousemove = "xy_report(event)">rst</button>
+                    <button type="button" class="keyboard_key" id = "button_uvw" onmousedown = "showuvw()" onmouseup = "restoreuvw()" onmousemove = "xy_report(event)">uvw</button>
+                    <button type="button" class="keyboard_key" id = "button_xyz" onmousedown = "showxyz()" onmouseup = "restorexyz()" onmousemove = "xy_report(event)">xyz</button>
                 </div>
             </div>
             <p id="demo"></p>
-            <div class="www"></div>
+            <div class="www" onemousedown = "dosomething"></div>
 
         <script src="keyboard.js"></script>
 
