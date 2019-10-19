@@ -4,21 +4,30 @@
         <title>Tiny Keyboard</title>
         <link rel="stylesheet" href="keyboard.css">
     </head>
-    <body>
+    <body onload="InitializeApp()">
         
         <h1>Tiny Keyboard</h1>
         <textarea id = "txt_area" style="top: 130px; right: 30px; width: 300px;"></textarea>
             <div class="keyboard">
                 <div class="keyboard_keys">
-                    <button type="button" class="keyboard_key" id = "button_abc" onmousedown = "showabc()" onmouseup = "restoreabc(e)" onmousemove = "xy_report(event)">abc</button>
-                    <button type="button" class="keyboard_key" id = "button_def" onmousedown = "showdef()" onmouseup = "restoredef()" onmousemove = "xy_report(event)">def</button>
-                    <button type="button" class="keyboard_key" id = "button_ghi" onmousedown = "showghi()" onmouseup = "restoreghi()" onmousemove = "xy_report(event)">ghi</button>
-                    <button type="button" class="keyboard_key" id = "button_jkl" onmousedown = "showjkl()" onmouseup = "restorejkl()" onmousemove = "xy_report(event)">jkl</button>
-                    <button type="button" class="keyboard_key" id = "button_mn"  onmousedown = "showmn()"  onmouseup = "restoremn()"  onmousemove = "xy_report(event)">mn</button>
-                    <button type="button" class="keyboard_key" id = "button_opq" onmousedown = "showopq()" onmouseup = "restoreopq()" onmousemove = "xy_report(event)">opq</button>
-                    <button type="button" class="keyboard_key" id = "button_rst" onmousedown = "showrst()" onmouseup = "restorerst()" onmousemove = "xy_report(event)">rst</button>
-                    <button type="button" class="keyboard_key" id = "button_uvw" onmousedown = "showuvw()" onmouseup = "restoreuvw()" onmousemove = "xy_report(event)">uvw</button>
-                    <button type="button" class="keyboard_key" id = "button_xyz" onmousedown = "showxyz()" onmouseup = "restorexyz()" onmousemove = "xy_report(event)">xyz</button>
+                    <button type="button" class="keyboard_key" id = "button_abc" >abc</button>
+                    <button type="button" class="keyboard_key" id = "button_def" >def</button>
+                    <button type="button" class="keyboard_key" id = "button_ghi" >ghi</button>
+                    <button type="button" class="keyboard_key" id = "button_jkl" >jkl</button>
+                    <button type="button" class="keyboard_key" id = "button_mn"  >mn</button>
+                    <button type="button" class="keyboard_key" id = "button_opq" >opq</button>
+                    <button type="button" class="keyboard_key" id = "button_rst" >rst</button>
+                    <button type="button" class="keyboard_key" id = "button_uvw" >uvw</button>
+                    <button type="button" class="keyboard_key" id = "button_xyz" >xyz</button>
+                    <!--button type="button" class="keyboard_key" id = "button_abc" onmousedown = "showabc()" onmouseup = "restoreall()" onmousemove = "xy_report(event)">abc</button>
+                    <!button type="button" class="keyboard_key" id = "button_def" onmousedown = "showdef()" onmouseup = "restoredef()" onmousemove = "xy_report(event)">def</button>
+                    <!button type="button" class="keyboard_key" id = "button_ghi" onmousedown = "showghi()" onmouseup = "restoreghi()" onmousemove = "xy_report(event)">ghi</button>
+                    <!button type="button" class="keyboard_key" id = "button_jkl" onmousedown = "showjkl()" onmouseup = "restorejkl()" onmousemove = "xy_report(event)">jkl</button>
+                    <!button type="button" class="keyboard_key" id = "button_mn"  onmousedown = "showmn()"  onmouseup = "restoremn()"  onmousemove = "xy_report(event)">mn</button>
+                    <!button type="button" class="keyboard_key" id = "button_opq" onmousedown = "showopq()" onmouseup = "restoreopq()" onmousemove = "xy_report(event)">opq</button>
+                    <!button type="button" class="keyboard_key" id = "button_rst" onmousedown = "showrst()" onmouseup = "restorerst()" onmousemove = "xy_report(event)">rst</button>
+                    <!button type="button" class="keyboard_key" id = "button_uvw" onmousedown = "showuvw()" onmouseup = "restoreuvw()" onmousemove = "xy_report(event)">uvw</button>
+                    <!button type="button" class="keyboard_key" id = "button_xyz" onmousedown = "showxyz()" onmouseup = "restorexyz()" onmousemove = "xy_report(event)">xyz</button-->
                 </div>
             </div>
             <p id="demo"></p>
