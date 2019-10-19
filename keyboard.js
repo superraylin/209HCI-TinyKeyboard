@@ -1,10 +1,11 @@
+var tapped = false;
 function InitializeApp(){
  ["pointerdown", "pointerup"].forEach(function(e) {
             document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
             document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
             document.getElementById("button_ghi").addEventListener(e, PointerHandlerGHI);
             document.getElementById("button_jkl").addEventListener(e, PointerHandlerJKL);
-            document.getElementById("button_mn").addEventListener(e, PointerHandlerMN);
+            document.getElementById("button_mn").addEventListener(e,  PointerHandlerMN);
             document.getElementById("button_opq").addEventListener(e, PointerHandlerOPQ);
             document.getElementById("button_rst").addEventListener(e, PointerHandlerRST);
             document.getElementById("button_uvw").addEventListener(e, PointerHandlerUVW);
@@ -71,9 +72,20 @@ function PointerHandlerJKL(event){
 
 function PointerHandlerMN(event){
   if (event.type === "pointerdown"){
+      if(!tapped){
+        tapped = setTimeout(function(){
+          document.getElementById("button_jkl").firstChild.data = "m";
+          document.getElementById("button_opq").firstChild.data = "n";
+          tapped = null;
+        }, 300);
+
+      }else{
+        clearTimeout(tapped); //stop single tap callback
+        tapped=null;
+        document.getElementById("txt_area").value += " ";
+      }
       hideall();
-      document.getElementById("button_jkl").firstChild.data = "m";
-      document.getElementById("button_opq").firstChild.data = "n";
+
       
   }
   if (event.type == "pointerup"){
@@ -137,55 +149,9 @@ function PointerHandlerXYZ(event){
     restoreall();
   }
 }
-// function PointerHandler(event) {
-//     event.preventDefault();
-
-//     if (event.type == "pointerdown" && event.button === 0)
-//         mousePressed = true;
-
-//     if (mousePressed || event.type == "pointerup" || (event.buttons & 1)) {
-//         var fakeTouch = {
-//             identifier: event.pointerId,
-//             pageX : event.pageX,
-//             pageY : event.pageY,
-//             radiusX : event.width / 2,
-//             radiusY : event.height / 2 ,
-//             force : event.pressure,
-//         };
-//         var eventType = event.type == "pointerdown" ? "touchstart" :
-//             event.type == "pointerup" ? "touchend" : "touchmove";
-//         event.preventDefault();
-
-//         console.log(event.pageX,event.pageY);
-//         //drawTouch(fakeTouch, eventType, false);
-
-// //         if (drawCoalesced && event.getCoalescedEvents) {
-// //             var points = event.getCoalescedEvents();
-// //             for(let coalesced of points) {
-// //                 fakeTouch.pageX = coalesced.pageX;
-// //                 fakeTouch.pageY = coalesced.pageY + 50;
-// //                 fakeTouch.radiusX = coalesced.width / 2;
-// //                 fakeTouch.radiusY = coalesced.height / 2;
-// //                 fakeTouch.force = coalesced.pressure;
-
-// //                 drawTouch(fakeTouch, eventType, true);
-// //             }
-// //         }
-//     }
-
-//     if (event.type == "pointerup")
-//         mousePressed = false;
-// }
 
 
-function showabc(event) {
-  hideall();
-  //console.log(event)
-  document.getElementById("button_rst").firstChild.data = "a";
-  document.getElementById("button_xyz").firstChild.data = "b";
-  document.getElementById("button_ghi").firstChild.data = "c";
-  //console.log(document.getElementById("button_abc").id.substring(7,10))
-}
+
 
 
 function hideall(){
@@ -207,44 +173,3 @@ function restoreall(){
 })
 }
 
-function restoreabc(){
-  
-}
-function restorerst(){
-    let current_text = document.getElementById("button_rst").firstChild.data 
-    //console.log(current_text)
-    if (current_text !== "rst"){
-      restoreall();
-      document.getElementById("txt_area").value += current_text;
-      document.getElementById("button_rst").firstChild.data = "rst";
-
-    };
-}
-
-function restorexyz(){
-    let current_text = document.getElementById("button_xyz").firstChild.data 
-    //console.log(current_text)
-    if (current_text !== "xyz"){
-      restoreall();
-      document.getElementById("txt_area").value += current_text;
-      document.getElementById("button_rst").firstChild.data = "rst";
-
-    };
-}
-
-function restoreghi(){
-    let current_text = document.getElementById("button_ghi").firstChild.data 
-    //console.log(current_text)
-    if (current_text !== "ghi"){
-      restoreall();
-      document.getElementById("txt_area").value += current_text;
-      document.getElementById("button_rst").firstChild.data = "ghi";
-
-    };
-}
-
-
-function xy_report(e){
-  //console.log(e)
-  document.getElementById("demo").innerHTML = " " + e.clientX +", " + e.clientY;
-}
