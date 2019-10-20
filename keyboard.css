@@ -2,18 +2,20 @@
     
     left: 0;
     bottom: 0;
-    height: 90px;
+    height: 100px;
     width: 100px;
     padding: 5px;
     user-select: none;
     transition: bottom 0.4s;
-    touch-action: none;
+    touch-action: auto;
 
 }
 
 .keyboard_keys {
     text-align: center;
-    touch-action: none;
+    touch-action: auto;
+    height: 100px;
+    width: 100px;
 }
 
 .keyboard_key {
@@ -31,7 +33,7 @@
     padding: 0;
     -webkit-tap-highlight-color: transparent;
     position: relative;
-    touch-action: none;
+    touch-action: auto;
     
 }
 

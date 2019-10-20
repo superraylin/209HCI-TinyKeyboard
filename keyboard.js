@@ -1,5 +1,5 @@
 var tapped = false;
-function InitializeApp(){
+function Init(){
  ["pointerdown", "pointerup"].forEach(function(e) {
             document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
             document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
@@ -12,13 +12,12 @@ function InitializeApp(){
             document.getElementById("button_xyz").addEventListener(e, PointerHandlerXYZ);
             
         });
-  
 }
 
 function PointerHandlerABC(event){
 
   event.preventDefault();
-  console.log(event)
+  console.log(event);
   //console.log(event.button,event.buttons);
   if (event.type === "pointerdown"){
       hideall();
@@ -119,7 +118,7 @@ function PointerHandlerOPQ(event){
 
 function PointerHandlerRST(event){
     event.preventDefault();
-    console.log(event)
+    console.log(event.type,event.target);
   if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "r";
