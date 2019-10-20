@@ -1,6 +1,6 @@
 var tapped = false;
 function InitializeApp(){
- ["touchstart", "touchend"].forEach(function(e) {
+ ["pointerdown", "pointerup"].forEach(function(e) {
             document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
             document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
             document.getElementById("button_ghi").addEventListener(e, PointerHandlerGHI);
@@ -20,13 +20,13 @@ function PointerHandlerABC(event){
   event.preventDefault();
   console.log(event)
   //console.log(event.button,event.buttons);
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_rst").firstChild.data = "a";
       document.getElementById("button_xyz").firstChild.data = "b";
       document.getElementById("button_ghi").firstChild.data = "c";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_abc").firstChild.data; 
     if (current_text !== "abc" && current_text !== " "){document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -34,13 +34,13 @@ function PointerHandlerABC(event){
 }
 function PointerHandlerDEF(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "d";
       document.getElementById("button_uvw").firstChild.data = "e";
       document.getElementById("button_ghi").firstChild.data = "f";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_def").firstChild.data; 
     if (current_text !== "def" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -48,13 +48,13 @@ function PointerHandlerDEF(event){
 }
 function PointerHandlerGHI(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "g";
       document.getElementById("button_rst").firstChild.data = "h";
       document.getElementById("button_xyz").firstChild.data = "i";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_ghi").firstChild.data; 
     if (current_text !== "ghi" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -63,13 +63,13 @@ function PointerHandlerGHI(event){
 
 function PointerHandlerJKL(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "j";
       document.getElementById("button_opq").firstChild.data = "k";
       document.getElementById("button_rst").firstChild.data = "l";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_jkl").firstChild.data; 
     if (current_text !== "jkl" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -78,7 +78,7 @@ function PointerHandlerJKL(event){
 
 function PointerHandlerMN(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       if(!tapped){
         tapped = setTimeout(function(){
           document.getElementById("button_jkl").firstChild.data = "m";
@@ -95,7 +95,7 @@ function PointerHandlerMN(event){
 
       
   }
-  if (event.type ==="touchend"){
+  if (event.type ==="pointerup"){
     let current_text = document.getElementById("button_mn").firstChild.data; 
     if (current_text !== "mn" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -104,13 +104,13 @@ function PointerHandlerMN(event){
 
 function PointerHandlerOPQ(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_ghi").firstChild.data = "o";
       document.getElementById("button_jkl").firstChild.data = "p";
       document.getElementById("button_xyz").firstChild.data = "q";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_opq").firstChild.data; 
     if (current_text !== "opq" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -120,13 +120,13 @@ function PointerHandlerOPQ(event){
 function PointerHandlerRST(event){
     event.preventDefault();
     console.log(event)
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "r";
       document.getElementById("button_ghi").firstChild.data = "s";
       document.getElementById("button_xyz").firstChild.data = "t";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_rst").firstChild.data; 
     if (current_text !== "rst" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -135,13 +135,13 @@ function PointerHandlerRST(event){
 
 function PointerHandlerUVW(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_rst").firstChild.data = "u";
       document.getElementById("button_def").firstChild.data = "v";
       document.getElementById("button_xyz").firstChild.data = "w";
   }
-  if (event.type ==="touchend"){
+  if (event.type ==="pointerup"){
     let current_text = document.getElementById("button_uvw").firstChild.data; 
     if (current_text !== "uvw" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -149,13 +149,13 @@ function PointerHandlerUVW(event){
 }
 function PointerHandlerXYZ(event){
     event.preventDefault();
-  if (event.type === "touchstart"){
+  if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_rst").firstChild.data = "x";
       document.getElementById("button_abc").firstChild.data = "y";
       document.getElementById("button_ghi").firstChild.data = "z";
   }
-  if (event.type === "touchend"){
+  if (event.type === "pointerup"){
     let current_text = document.getElementById("button_xyz").firstChild.data; 
     if (current_text !== "xyz" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
     restoreall();
@@ -184,5 +184,6 @@ function restoreall(){
     single_button.firstChild.data = next_text;
 })
 }
+
 
 

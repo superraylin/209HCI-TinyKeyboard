@@ -7,11 +7,13 @@
     padding: 5px;
     user-select: none;
     transition: bottom 0.4s;
+    touch-action: none;
 
 }
 
 .keyboard_keys {
     text-align: center;
+    touch-action: none;
 }
 
 .keyboard_key {
@@ -29,6 +31,7 @@
     padding: 0;
     -webkit-tap-highlight-color: transparent;
     position: relative;
+    touch-action: none;
     
 }
 
