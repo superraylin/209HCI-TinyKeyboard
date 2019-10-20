@@ -134,20 +134,21 @@ function PointerHandlerJKL(event){
 function PointerHandlerMN(event){
     event.preventDefault();
   if (event.type === "pointerdown"){
-      if(!tapped){
-        tapped = setTimeout(function(){
+//       if(!tapped){
+//         tapped = setTimeout(function(){
+          hideall();
           document.getElementById("button_rst").firstChild.data = "m";
           document.getElementById("button_ghi").firstChild.data = "n";
           document.getElementById("button_xyz").firstChild.data = "sp";
-          tapped = null;
-        }, 300);
+//           tapped = null;
+//         }, 300);
 
-      }else{
-        clearTimeout(tapped); //stop single tap callback
-        tapped=null;
-        document.getElementById("txt_area").value += " ";
-      }
-      hideall();
+//       }else{
+//         clearTimeout(tapped); //stop single tap callback
+//         tapped=null;
+//         document.getElementById("txt_area").value += " ";
+//       }
+      
 
       
   }
