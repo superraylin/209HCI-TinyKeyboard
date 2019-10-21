@@ -1,7 +1,13 @@
 var tapped = false;
+
+//for 2touch
+let two_touch = false;
+let touch_counts = 0;
+
+
 function Init(){
-  console.log('something');
- ["pointerdown", "pointerup","pointermove"].forEach(function(e) {
+  document.addEventListener('contextmenu', event => event.preventDefault());
+ ["pointerdown", "pointerup"].forEach(function(e) {
             document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
             document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
             document.getElementById("button_ghi").addEventListener(e, PointerHandlerGHI);
@@ -15,40 +21,23 @@ function Init(){
         });
 }
 
+
+
 function PointerHandlerABC(event){
 
   event.preventDefault();
-  //console.log(event);
-  //console.log(event.button,event.buttons);
+
   if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_rst").firstChild.data = "a";
       document.getElementById("button_xyz").firstChild.data = "b";
       document.getElementById("button_ghi").firstChild.data = "c";
-      //document.getElementById("button_ghi").style.display = "none";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_abc").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "c";
-              break;
-      case 2: break;
-      case 3: document.getElementById("txt_area").value += "a";
-              break;
-      case 4: document.getElementById("txt_area").value += "b";
-              break;
-    }
-
-    //if (current_text !== "abc" && current_text !== " "){document.getElementById("txt_area").value += current_text;}
-    //document.getElementById("button_ghi").style.display = "block";
-    restoreall();
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup" && event.isPrimary){
+    enter_text(event,"c","","a","b");
   }
-//   if(event.type === "pointermove"){
-//     console.log("offset:"+ event.offsetX+ " "+  event.offsetY);
-//     console.log("Client:"+ event.clientX+ " "+  event.clientY);
-//   }
 }
 function PointerHandlerDEF(event){
     event.preventDefault();
@@ -57,82 +46,53 @@ function PointerHandlerDEF(event){
       document.getElementById("button_rst").firstChild.data = "d";
       document.getElementById("button_xyz").firstChild.data = "e";
       document.getElementById("button_ghi").firstChild.data = "f";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_def").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "f";
-              break;
-      case 2: break;
-      case 3: document.getElementById("txt_area").value += "d";
-              break;
-      case 4: document.getElementById("txt_area").value += "e";
-              break;
-    }
-    //if (current_text !== "def" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
+    if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+    //delete_swipe_up(event);
+    enter_text(event,"f","","d","e");
+
   }
 }
 function PointerHandlerGHI(event){
-    event.preventDefault();
+  event.preventDefault();
   if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "g";
       document.getElementById("button_rst").firstChild.data = "h";
       document.getElementById("button_xyz").firstChild.data = "i";
+      delete_swipe_down(event);
+      console.log(touch_counts);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_ghi").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: break;
-      case 2: document.getElementById("txt_area").value += "g";
-              break;
-      case 3: document.getElementById("txt_area").value += "h";
-              break;
-      case 4: document.getElementById("txt_area").value += "i";
-              break;
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+
+    if(!delete_swipe_up(event)){
+      enter_text(event,"","g","h","i");
+
     }
-    //if (current_text !== "ghi" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
-  }
-    if(event.type === "pointermove"){
-    console.log("offset:"+ event.offsetX+ " "+  event.offsetY);
-    console.log("Client:"+ event.clientX+ " "+  event.clientY);
   }
 }
 
 function PointerHandlerJKL(event){
-    event.preventDefault();
+  event.preventDefault();
   if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_rst").firstChild.data = "j";
       document.getElementById("button_xyz").firstChild.data = "k";
       document.getElementById("button_ghi").firstChild.data = "l";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_jkl").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "l";
-              break;
-      case 2: break;
-      case 3: document.getElementById("txt_area").value += "j";
-              break;
-      case 4: document.getElementById("txt_area").value += "k";
-              break;
-    }
-    //if (current_text !== "jkl" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+    enter_text(event,"l","","j","k");
+
   }
 }
 
 function PointerHandlerMN(event){
-    event.preventDefault();
+  event.preventDefault();
   if (event.type === "pointerdown"){
 //       if(!tapped){
 //         tapped = setTimeout(function(){
@@ -140,6 +100,7 @@ function PointerHandlerMN(event){
           document.getElementById("button_rst").firstChild.data = "m";
           document.getElementById("button_ghi").firstChild.data = "n";
           document.getElementById("button_xyz").firstChild.data = "sp";
+          delete_swipe_down(event);
 //           tapped = null;
 //         }, 300);
 
@@ -148,25 +109,12 @@ function PointerHandlerMN(event){
 //         tapped=null;
 //         document.getElementById("txt_area").value += " ";
 //       }
-      
 
       
   }
-  if (event.type ==="pointerup"){
-    let current_text = document.getElementById("button_mn").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "n";
-              break;
-      case 2: break;
-      case 3: document.getElementById("txt_area").value += "m";
-              break;
-      case 4: document.getElementById("txt_area").value += " ";
-              break;
-    }
-    //if (current_text !== "mn" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type ==="pointerup"&& event.isPrimary){
+    enter_text(event,"n","","m"," ");
   }
 }
 
@@ -177,53 +125,29 @@ function PointerHandlerOPQ(event){
       document.getElementById("button_abc").firstChild.data = "o";
       document.getElementById("button_rst").firstChild.data = "p";
       document.getElementById("button_xyz").firstChild.data = "q";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_opq").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: break;
-      case 2: document.getElementById("txt_area").value += "o";
-              break;
-      case 3: document.getElementById("txt_area").value += "p";
-              break;
-      case 4: document.getElementById("txt_area").value += "q";
-              break;
-    }
-    //if (current_text !== "opq" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
+    if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+     if(!delete_swipe_up(event)){
+       enter_text(event,"","o","p","q");
+      }
   }
 }
 
 function PointerHandlerRST(event){
-    event.preventDefault();
-    console.log(event.type);
+  event.preventDefault();
+  //console.log(event.type);
   if (event.type === "pointerdown"){
       hideall();
       document.getElementById("button_abc").firstChild.data = "r";
       document.getElementById("button_ghi").firstChild.data = "s";
       document.getElementById("button_xyz").firstChild.data = "t";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_rst").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "s";
-              break;
-      case 2: document.getElementById("txt_area").value += "r";
-              break;
-      case 3: break;
-      case 4: document.getElementById("txt_area").value += "t";
-              break;
-    }
-    //if (current_text !== "rst" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
-  }
-   if(event.type === "pointermove"){
-    console.log("offset:"+ event.offsetX+ " "+  event.offsetY);
-    console.log("Client:"+ event.clientX+ " "+  event.clientY);
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+    enter_text(event,"s","r","","t");
   }
 }
 
@@ -234,22 +158,12 @@ function PointerHandlerUVW(event){
       document.getElementById("button_abc").firstChild.data = "u";
       document.getElementById("button_ghi").firstChild.data = "v";
       document.getElementById("button_xyz").firstChild.data = "w";
+      delete_swipe_down(event);
   }
-  if (event.type ==="pointerup"){
-    let current_text = document.getElementById("button_uvw").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "v";
-              break;
-      case 2: document.getElementById("txt_area").value += "u";
-              break;
-      case 3: break;
-      case 4: document.getElementById("txt_area").value += "w";
-              break;
-    }
-    //if (current_text !== "uvw" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type ==="pointerup"&& event.isPrimary){
+    enter_text(event,"v","","u","w");
+
   }
 }
 function PointerHandlerXYZ(event){
@@ -259,33 +173,62 @@ function PointerHandlerXYZ(event){
       document.getElementById("button_rst").firstChild.data = "x";
       document.getElementById("button_abc").firstChild.data = "y";
       document.getElementById("button_ghi").firstChild.data = "z";
+      delete_swipe_down(event);
   }
-  if (event.type === "pointerup"){
-    let current_text = document.getElementById("button_xyz").firstChild.data; 
-    let cursor_pos = position_button(event.clientX,event.clientY);
-    console.log(cursor_pos);
-    switch(cursor_pos){
-      case 1: document.getElementById("txt_area").value += "z";
-              break;
-      case 2: document.getElementById("txt_area").value += "y";
-              break;
-      case 3: document.getElementById("txt_area").value += "x";
-              break;
-      case 4: break;
-    }
-    //if (current_text !== "xyz" && current_text !== " ") {document.getElementById("txt_area").value += current_text;}
-    restoreall();
-  }
-  if(event.type === "pointermove"){
-    console.log("offset:"+ event.offsetX+ " "+  event.offsetY);
-    console.log("Client:"+ event.clientX+ " "+  event.clientY);
+  if(event.type ==="pointerup") touch_counts -=1;
+  if (event.type === "pointerup"&& event.isPrimary){
+     if(!delete_swipe_up(event)){
+       enter_text(event,"z","y","x","");
+      }
   }
 }
 
+function delete_swipe_down(event){
+  touch_counts += 1;
+  if (touch_counts >=2){
+      two_touch = true;
+      hideall();
+      document.getElementById("button_abc").firstChild.data = "d";
+      document.getElementById("button_jkl").firstChild.data = "e";
+      document.getElementById("button_rst").firstChild.data = "l";
+  }
+}
+
+function delete_swipe_up(event){
+  console.log(touch_counts)
+  //touch_counts -=1;
+  if(two_touch === true && event.isPrimary === true){
+    let cursor_pos = position_button(event.clientX,event.clientY);
+    if(cursor_pos === 2 || cursor_pos ===3){
+          let str = document.getElementById("txt_area").value;
+          document.getElementById("txt_area").value = str.substring(0, str.length - 1);
+          two_touch = false;
+    }
+    restoreall();
+    return true;
+  }
+}
+
+function enter_text(event,ch1,ch2,ch3,ch4){
+    let button_name = event.target.id
+    let current_text = document.getElementById(button_name).firstChild.data; 
+    let cursor_pos = position_button(event.clientX,event.clientY);
+    //console.log(cursor_pos);
+    switch(cursor_pos){
+      case 1: document.getElementById("txt_area").value +=  ch1;
+              break;
+      case 2: document.getElementById("txt_area").value +=  ch2;
+              break;
+      case 3: document.getElementById("txt_area").value += ch3;
+              break;
+      case 4: document.getElementById("txt_area").value += ch4;
+              break;
+    }
+    restoreall();
+}
 
 
-
-
+//clrear all key text
 function hideall(){
     let all_buttons = document.getElementsByClassName("keyboard_key");
     Array.prototype.forEach.call(all_buttons, function(single_button) {
@@ -294,6 +237,7 @@ function hideall(){
 })
 }
 
+// restore all key text
 function restoreall(){
     let all_buttons = document.getElementsByClassName("keyboard_key");
     Array.prototype.forEach.call(all_buttons, function(single_button) {
@@ -305,7 +249,7 @@ function restoreall(){
 })
 }
 
-
+// return quardant on release cursor position
 function position_button(x,y){
   if (x >= 12 && x <= 62){
     if(y >= 123 && y<= 170){
