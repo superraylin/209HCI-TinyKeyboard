@@ -6,31 +6,36 @@
 <!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     </head>
     <body onload="Init()">
+       
+        <h1 style = "position: relative; left:450px; top:0">Tiny Keyboard</h1>
+        <textarea id = "txt_area" autofocus></textarea>
+<br>
+          <div class="column">
+            <p id = "sel1"  >tempttext1</p>
+          </div>
+          <div class="column">
+            <p id = "sel2"  >tempttext2</p>
+          </div>
+          <div class="column">
+            <p id = "sel3" >tempttext3</p>
+          </div>
+
         
-        <h1>Tiny Keyboard</h1>
-        <textarea id = "txt_area" style="top: 130px; right: 30px; width: 300px;" autofocus></textarea>
-            <div class="keyboard">
-                <div class="keyboard_keys">
+            <div class="keyboard" >
+                <div class="keyboard_keys" id = "keyboardbox">
+                    <img src="cross.png" class="cross">
                     <button type="button" class="keyboard_key" id = "button_abc" draggable = "true">abc</button>
                     <button type="button" class="keyboard_key" id = "button_def" draggable = "true">def</button>
                     <button type="button" class="keyboard_key" id = "button_ghi" draggable = "true">ghi</button>
                     <button type="button" class="keyboard_key" id = "button_jkl" draggable = "true">jkl</button>
-                    <button type="button" class="keyboard_key" id = "button_mn"  draggable = "true">mn</button>
-                    <button type="button" class="keyboard_key" id = "button_opq" draggable = "true">opq</button>
-                    <button type="button" class="keyboard_key" id = "button_rst" draggable = "true">rst</button>
-                    <button type="button" class="keyboard_key" id = "button_uvw" draggable = "true">uvw</button>
-                    <button type="button" class="keyboard_key" id = "button_xyz" draggable = "true">xyz</button>
-<!--                     <button type="button" class="keyboard_key" id = "button_abc" onclick = "showabc()"  >abc</button>
-                    <button type="button" class="keyboard_key" id = "button_def" onclick = "showdef()"  >def</button>
-                    <button type="button" class="keyboard_key" id = "button_ghi" onclick = "showghi()"  >ghi</button>
-                    <button type="button" class="keyboard_key" id = "button_jkl" onclick = "showjkl()"  >jkl</button>
-                    <button type="button" class="keyboard_key" id = "button_mn"  onclick = "showmn()"    >mn</button>
-                    <button type="button" class="keyboard_key" id = "button_opq" onclick = "showopq()"  >opq</button>
-                    <button type="button" class="keyboard_key" id = "button_rst" onclick = "showrst()"  >rst</button>
-                    <button type="button" class="keyboard_key" id = "button_uvw" onclick = "showuvw()"  >uvw</button>
-                    <button type="button" class="keyboard_key" id = "button_xyz" onclick = "showxyz()"  >xyz</button> -->
+                    <button type="button" class="keyboard_key" id = "button_mno"  draggable = "true">mno</button>
+                    <button type="button" class="keyboard_key" id = "button_pqr" draggable = "true">pqr</button>
+                    <button type="button" class="keyboard_key" id = "button_stu" draggable = "true">stu</button>
+                    <button type="button" class="keyboard_key" id = "button_vwx" draggable = "true">vwx</button>
+                    <button type="button" class="keyboard_key" id = "button_yz" draggable = "true">yz</button>
                 </div>
             </div>
+            
             <p id="demo"></p>
             <div class="www" onemousedown = "dosomething"></div>
 
