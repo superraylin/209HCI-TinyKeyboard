@@ -3143,6 +3143,8 @@ function enter_text(event,ch1,ch2,ch3,ch4){
       document.getElementById('sel2').innerText = "";
       document.getElementById('sel3').innerText = "";
     }
+    let scroll = document.getElementById("txt_area");
+    scroll.scrollTop = scroll.scrollHeight;
     restoreall();
 }
 
