@@ -1,7 +1,7 @@
 .keyboard {
     position: relative;
     left: 500px;
-    top: 600px
+    top: 00px;
     height: 100px;
     width: 100px;
     padding: 5px;
@@ -13,6 +13,7 @@
 
 .keyboard_keys {
     position: absolute;
+    top:50px;
     text-align: center;
     touch-action: none;
     height: 100px;
@@ -36,6 +37,7 @@
     -webkit-tap-highlight-color: transparent;
     position: relative;
     touch-action: none;
+    z-index: 2;
     
 }
 #txt_area{
@@ -45,7 +47,13 @@
     width: 300px;
 /*     style="top: 130px; right: 30px; width: 300px;" */
 }
-
+p{
+    position: relative;
+    /* padding: 10px; */
+    /* top: 200px; */
+    z-index: 0;
+    /* width: 100px; */
+}
 .cross
 {
   position:absolute;
@@ -61,11 +69,11 @@
 }
 
 /* Create three equal columns that sits next to each other */
-.column {
-    display: inline-block;
-    position:relative;
-    top: 0px;
-    left: 450px;
+.autowords {
+    
+    position:fixed;
+    top: 150px;
+    left: 400px;
     padding: 5px;
 }
 /* 
