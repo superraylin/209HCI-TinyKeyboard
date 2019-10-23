@@ -8,7 +8,7 @@
     user-select: none;
     transition: bottom 0.4s;
     touch-action: none;
-    
+
 }
 
 .keyboard_keys {
@@ -22,7 +22,7 @@
 
 .keyboard_key {
     position:absolute;
-    
+
     height: 33.33px;
     width: 33.33px;
     margin: -1.5px;
@@ -38,7 +38,7 @@
     position: relative;
     touch-action: none;
     z-index: 2;
-    
+
 }
 #txt_area{
     position: relative;
@@ -70,13 +70,13 @@ p{
 
 /* Create three equal columns that sits next to each other */
 .autowords {
-    
+
     position:fixed;
-    top: 150px;
+    top: 175px;
     left: 400px;
     padding: 5px;
 }
-/* 
+/*
 .www {
     left: 0;
     bottom: 0;
