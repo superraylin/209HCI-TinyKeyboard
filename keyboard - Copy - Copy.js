@@ -18,7 +18,7 @@ function Init(){
             document.getElementById("button_stu").addEventListener(e, PointerHandlerRST);
             document.getElementById("button_vwx").addEventListener(e, PointerHandlerUVW);
             document.getElementById("button_yz").addEventListener(e, PointerHandlerXYZ);
-            
+
         });
 }
 /*****************************************************/
@@ -2784,7 +2784,7 @@ var ac = new AutocompleteSystem(tags);
 
 function PointerHandlerABC(event){
   event.preventDefault();
-  
+
   if (event.type === "pointerdown"){
     if(!tapped){
       tapped = setTimeout(function(){
@@ -2861,7 +2861,7 @@ function PointerHandlerDEF(event){
       delete_swipe_down(event);
   }
   if(event.type ==="pointerup") touch_counts -=1;
-  
+
   if (event.type === "pointerup"&& event.isPrimary){
     if(!delete_swipe_up(event)){
       enter_text(event,"f","e","d","");
@@ -2934,7 +2934,7 @@ function PointerHandlerMN(event){
           showButtonText("m","n","o");
 
           delete_swipe_down(event);
-      
+
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
@@ -2999,7 +2999,7 @@ function PointerHandlerRST(event){
   }
   if (event.type === "pointerup" && event.isPrimary){
     if(!tapped && !double_tapped){
-      enter_text(event,"s","t","u","");
+      enter_text(event,"u","t","s","");
     }
   }
 }
@@ -3024,7 +3024,7 @@ function PointerHandlerUVW(event){
 function PointerHandlerXYZ(event){
     event.preventDefault();
   if (event.type === "pointerdown"){
-      
+
       /*Delay for double tap*/
     if(!tapped){
       tapped = setTimeout(function(){
@@ -3093,7 +3093,7 @@ function delete_swipe_up(event){
 /***********enter/delete text respect to pointerup position****/
 function enter_text(event,ch1,ch2,ch3,ch4){
     let button_name = event.target.id
-    let current_text = document.getElementById(button_name).firstChild.data; 
+    let current_text = document.getElementById(button_name).firstChild.data;
     let cursor_pos = position_button(event.clientX,event.clientY);
 //     console.log(cursor_pos);
     switch(cursor_pos){
@@ -3160,7 +3160,7 @@ function hideall(){
     let all_buttons = document.getElementsByClassName("keyboard_key");
     Array.prototype.forEach.call(all_buttons, function(single_button) {
     single_button.firstChild.data = " ";
-    
+
 })
 }
 
@@ -3201,4 +3201,3 @@ function position_button(x,y){
    else { return 0; //out of bound}
   }
 }
-
