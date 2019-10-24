@@ -9,20 +9,19 @@ let touch_counts = 0;
 function Init(){
   document.addEventListener('contextmenu', event => event.preventDefault());
  ["pointerdown", "pointerup"].forEach(function(e) {
-            document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
-            document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
-            document.getElementById("button_ghi").addEventListener(e, PointerHandlerGHI);
-            document.getElementById("button_jkl").addEventListener(e, PointerHandlerJKL);
-            document.getElementById("button_mno").addEventListener( e,  PointerHandlerMN);
-            document.getElementById("button_pqr").addEventListener(e, PointerHandlerOPQ);
-            document.getElementById("button_stu").addEventListener(e, PointerHandlerRST);
-            document.getElementById("button_vwx").addEventListener(e, PointerHandlerUVW);
-            document.getElementById("button_yz").addEventListener(e, PointerHandlerXYZ);
-
-        });
+   document.getElementById("button_abc").addEventListener(e, PointerHandlerABC);
+    document.getElementById("button_def").addEventListener(e, PointerHandlerDEF);
+    document.getElementById("button_ghi").addEventListener(e, PointerHandlerGHI);
+    document.getElementById("button_jkl").addEventListener(e, PointerHandlerJKL);
+    document.getElementById("button_mno").addEventListener(e,  PointerHandlerMN);
+    document.getElementById("button_pqr").addEventListener(e, PointerHandlerOPQ);
+    document.getElementById("button_stu").addEventListener(e, PointerHandlerRST);
+    document.getElementById("button_vwx").addEventListener(e, PointerHandlerUVW);
+    document.getElementById("button_yz").addEventListener(e, PointerHandlerXYZ);
+  });
 }
-/*****************************************************/
 
+/*****Word library******/
 const tags = [
   'my',
   'watch',
@@ -2740,9 +2739,11 @@ const tags = [
   'chills'
 ];
 
+/*************Word Autocomplete Algorithm begin*************/
 /**
 * @param {string[]} sentences
-* @param {number[]} times
+* Get the frequency of all elements(words) in sentences 
+* for each letter in Alphabet
 */
 var AutocompleteSystem = function(sentences) {
   this.searchHistory = {};
@@ -2761,8 +2762,10 @@ var AutocompleteSystem = function(sentences) {
 
 /**
 * @param {string} str
-* @return {string[]}
+* @return {string[]} results
+* Get the sorted results of elements (words) based on their frequency 
 */
+
 AutocompleteSystem.prototype.input = function(str) {
   const firstChar = str[0];
   const results = Object.keys(this.searchHistory[firstChar]).filter(sentence => {
@@ -2778,13 +2781,13 @@ AutocompleteSystem.prototype.input = function(str) {
 
 var ac = new AutocompleteSystem(tags);
 
-/******************************************************/
+/*************Word Autocomplete Algorithm end*************/
+
 
 /**************Pointer Handler begin******************/
 
 function PointerHandlerABC(event){
   event.preventDefault();
-
   if (event.type === "pointerdown"){
     if(!tapped){
       tapped = setTimeout(function(){
@@ -2794,27 +2797,19 @@ function PointerHandlerABC(event){
         delete_swipe_down(event);
         tapped = null;
         }, 200);
-      }else{
-        double_tapped = true;
-        clearTimeout(tapped); //stop timeout callback
-        tapped=null;
-        //console.log(document.getElementById('sel2').innerText);
-        //if (document.getElementById("txt_area").value)
-        let sentence = document.getElementById("txt_area").value;
-        let t_arr = sentence.split(' ');
-        t_ch = t_arr[t_arr.length - 1];
-        //console.log(t_ch);
-        //console.log(document.getElementById("txt_area").value);
-        document.getElementById("txt_area").value -= t_ch;
-        //console.log(document.getElementById("txt_area").value);
-        document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel1').innerText + " ";
-        document.getElementById('sel1').innerText = " ";
-        document.getElementById('sel2').innerText = " ";
-        document.getElementById('sel3').innerText = " ";
-      }
-      //  hideall();
-      //  showButtonText("a","b","c");
-      //  delete_swipe_down(event);
+    } else {
+      double_tapped = true;
+      clearTimeout(tapped); //stop timeout callback
+      tapped=null;
+      let sentence = document.getElementById("txt_area").value;
+      let t_arr = sentence.split(' ');
+      t_ch = t_arr[t_arr.length - 1];
+      document.getElementById("txt_area").value -= t_ch;
+      document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel1').innerText + " ";
+      document.getElementById('sel1').innerText = " ";
+      document.getElementById('sel2').innerText = " ";
+      document.getElementById('sel3').innerText = " ";
+    }
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
@@ -2828,40 +2823,15 @@ function PointerHandlerABC(event){
 }
 
 function PointerHandlerDEF(event){
-    event.preventDefault();
+  event.preventDefault();
   if (event.type === "pointerdown"){
-    // if(!tapped){
-    //   tapped = setTimeout(function(){
-    //   hideall();
-    //   double_tapped = false;
-    //   showButtonText("d","e","f");
-
-    //       delete_swipe_down(event);
-    //       tapped = null;
-    //     }, 200);
-
-    //   }else{
-    //     double_tapped = true;
-    //     clearTimeout(tapped); //stop timeout callback
-    //     tapped=null;
-    //     //console.log(document.getElementById('sel2').innerText);
-    //     //if (document.getElementById("txt_area").value)
-    //     let sentence = document.getElementById("txt_area").value;
-    //     let t_arr = sentence.split(' ');
-    //     t_ch = t_arr[t_arr.length - 1];
-    //     //console.log(t_ch);
-    //     //console.log(document.getElementById("txt_area").value);
-    //     document.getElementById("txt_area").value -= t_ch;
-    //     //console.log(document.getElementById("txt_area").value);
-    //     document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel2').innerText + " ";
-    //   }
-      hideall();
-      showButtonText("d","e","f");
-
-      delete_swipe_down(event);
+    hideall();
+    showButtonText("d","e","f");
+    delete_swipe_down(event);
   }
-  if(event.type ==="pointerup") touch_counts -=1;
-
+  if(event.type ==="pointerup") {
+    touch_counts -=1;
+  }
   if (event.type === "pointerup"&& event.isPrimary){
     if(!delete_swipe_up(event)){
       enter_text(event,"f","e","d","");
@@ -2869,27 +2839,26 @@ function PointerHandlerDEF(event){
   }
 }
 
-function PointerHandlerGHI(event){
+function PointerHandlerGHI(event) {
   event.preventDefault();
   if (event.type === "pointerdown"){
-      hideall();
-      showButtonText("g","h","i");
-      delete_swipe_down(event);
-
+    hideall();
+    showButtonText("g","h","i");
+    delete_swipe_down(event);
   }
-  if(event.type ==="pointerup") touch_counts -=1;
+  if(event.type ==="pointerup") {
+    touch_counts -=1;
+  }
   if (event.type === "pointerup"&& event.isPrimary){
-
     if(!delete_swipe_up(event)){
       enter_text(event,"i","h","g","");
-
     }
   }
 }
 
-function PointerHandlerJKL(event){
+function PointerHandlerJKL(event) {
   event.preventDefault();
-  if (event.type === "pointerdown"){
+  if (event.type === "pointerdown") {
     if(!tapped){
       tapped = setTimeout(function(){
       hideall();
@@ -2898,74 +2867,68 @@ function PointerHandlerJKL(event){
       delete_swipe_down(event);
           tapped = null;
       }, 200);
-    } else{
-        double_tapped = true;
-        clearTimeout(tapped); //stop timeout callback
-        tapped=null;
-        let sentence = document.getElementById("txt_area").value;
-        let t_arr = sentence.split(' ');
-        t_ch = t_arr[t_arr.length - 1];
-        document.getElementById("txt_area").value -= t_ch;
-        document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel2').innerText + " ";
-        document.getElementById('sel1').innerText = " ";
-        document.getElementById('sel2').innerText = " ";
-        document.getElementById('sel3').innerText = " ";
-      }
-      //  hideall();
-      //  showButtonText("a","b","c");
-      //  delete_swipe_down(event);
+    } else {
+      double_tapped = true;
+      clearTimeout(tapped); //stop timeout callback
+      tapped=null;
+      let sentence = document.getElementById("txt_area").value;
+      let t_arr = sentence.split(' ');
+      t_ch = t_arr[t_arr.length - 1];
+      document.getElementById("txt_area").value -= t_ch;
+      document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel2').innerText + " ";
+      document.getElementById('sel1').innerText = " ";
+      document.getElementById('sel2').innerText = " ";
+      document.getElementById('sel3').innerText = " ";
+    }
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
     touch_counts -=1;
   }
-  if (event.type === "pointerup" && event.isPrimary){
+  if (event.type === "pointerup" && event.isPrimary) {
     if(!tapped && !double_tapped){
       enter_text(event,"l","k","j","");
     }
   }
 }
 
-function PointerHandlerMN(event){
+function PointerHandlerMN(event) {
   event.preventDefault();
   if (event.type === "pointerdown"){
-
-          hideall();
-          showButtonText("m","n","o");
-
-          delete_swipe_down(event);
-
+    hideall();
+    showButtonText("m","n","o");
+    delete_swipe_down(event);
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
     touch_counts -=1;
   }
-  if (event.type ==="pointerup" && event.isPrimary){
+  if (event.type ==="pointerup" && event.isPrimary) {
     if(!delete_swipe_up(event)){
       enter_text(event,"o","n","m","");
     }
   }
 }
 
-function PointerHandlerOPQ(event){
+function PointerHandlerOPQ(event) {
   event.preventDefault();
   if (event.type === "pointerdown"){
       hideall();
       showButtonText("p","q","r");
       delete_swipe_down(event);
   }
-  if(event.type ==="pointerup") {
+  if (event.type ==="pointerup") {
     setTimeout(restoreall,200);
     touch_counts -=1;
   }
-  if (event.type === "pointerup"&& event.isPrimary){
+  if (event.type === "pointerup"&& event.isPrimary) {
     if(!delete_swipe_up(event)){
       enter_text(event,"r","q","p","");
     }
   }
 }
 
-function PointerHandlerRST(event){
+function PointerHandlerRST(event) {
   event.preventDefault();
   if (event.type === "pointerdown"){
     if(!tapped){
@@ -2976,77 +2939,71 @@ function PointerHandlerRST(event){
       delete_swipe_down(event);
           tapped = null;
         }, 200);
-      }else{
-        double_tapped = true;
-        clearTimeout(tapped); //stop timeout callback
-        tapped=null;
-        let sentence = document.getElementById("txt_area").value;
-        let t_arr = sentence.split(' ');
-        t_ch = t_arr[t_arr.length - 1];
-        document.getElementById("txt_area").value -= t_ch;
-        document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel3').innerText + " ";
-        document.getElementById('sel1').innerText = " ";
-        document.getElementById('sel2').innerText = " ";
-        document.getElementById('sel3').innerText = " ";
-      }
-      //  hideall();
-      //  showButtonText("a","b","c");
-      //  delete_swipe_down(event);
+    } else {
+      double_tapped = true;
+      clearTimeout(tapped); //stop timeout callback
+      tapped=null;
+      let sentence = document.getElementById("txt_area").value;
+      let t_arr = sentence.split(' ');
+      t_ch = t_arr[t_arr.length - 1];
+      document.getElementById("txt_area").value -= t_ch;
+      document.getElementById("txt_area").value = sentence.substring(0,sentence.length - t_ch.length) +document.getElementById('sel3').innerText + " ";
+      document.getElementById('sel1').innerText = " ";
+      document.getElementById('sel2').innerText = " ";
+      document.getElementById('sel3').innerText = " ";
+    }
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
     touch_counts -=1;
   }
-  if (event.type === "pointerup" && event.isPrimary){
-    if(!tapped && !double_tapped){
+  if (event.type === "pointerup" && event.isPrimary) {
+    if(!tapped && !double_tapped) {
       enter_text(event,"u","t","s","");
     }
   }
 }
 
 function PointerHandlerUVW(event){
-    event.preventDefault();
-  if (event.type === "pointerdown"){
+  event.preventDefault();
+  if (event.type === "pointerdown") {
       hideall();
       showButtonText("v","w","x");
       delete_swipe_down(event);
   }
-  if(event.type ==="pointerup") {
+  if (event.type ==="pointerup") {
     setTimeout(restoreall,200);
     touch_counts -=1;
   }
-  if (event.type ==="pointerup"&& event.isPrimary){
-    if(!delete_swipe_up(event)){
+  if (event.type ==="pointerup"&& event.isPrimary) {
+    if(!delete_swipe_up(event)) {
       enter_text(event,"x","w","v","");
     }
   }
 }
 function PointerHandlerXYZ(event){
-    event.preventDefault();
+  event.preventDefault();
   if (event.type === "pointerdown"){
 
-      /*Delay for double tap*/
+    /*Delay for double tap*/
     if(!tapped){
       tapped = setTimeout(function(){
       hideall();
       double_tapped = false;
       showButtonText("del","y","z");
-
           delete_swipe_down(event);
           tapped = null;
         }, 200);
 
-      }else{
-        double_tapped = true;
-        clearTimeout(tapped); //stop timeout callback
-        tapped=null;
-        document.getElementById("txt_area").value += " ";
-       // document.getElementById("txt_area").value = document.getElementById('sel2').innerText + " ";
-       document.getElementById('sel1').innerText = " ";
-       document.getElementById('sel2').innerText = " ";
-       document.getElementById('sel3').innerText = " ";
-      }
-
+    } else{
+      double_tapped = true;
+      clearTimeout(tapped); //stop timeout callback
+      tapped=null;
+      document.getElementById("txt_area").value += " ";
+      document.getElementById('sel1').innerText = " ";
+      document.getElementById('sel2').innerText = " ";
+      document.getElementById('sel3').innerText = " ";
+    }
   }
   if(event.type ==="pointerup") {
     setTimeout(restoreall,200);
@@ -3063,15 +3020,15 @@ function PointerHandlerXYZ(event){
 /**************Pointer Handler end***********************/
 
 
-/***************double tap function begin ****************/
+/***************Double tap function begin ****************/
 function delete_swipe_down(event){
   touch_counts += 1;
   if (touch_counts >=2){
-      two_touch = true;
-      hideall();
-      document.getElementById("button_abc").firstChild.data = "d";
-      document.getElementById("button_jkl").firstChild.data = "e";
-      document.getElementById("button_rst").firstChild.data = "l";
+    two_touch = true;
+    hideall();
+    document.getElementById("button_abc").firstChild.data = "d";
+    document.getElementById("button_jkl").firstChild.data = "e";
+    document.getElementById("button_rst").firstChild.data = "l";
   }
 }
 
@@ -3079,9 +3036,9 @@ function delete_swipe_up(event){
   if(two_touch === true && event.isPrimary === true){
     let cursor_pos = position_button(event.clientX,event.clientY);
     if(cursor_pos === 2 || cursor_pos ===3){
-          let str = document.getElementById("txt_area").value;
-          document.getElementById("txt_area").value = str.substring(0, str.length - 1);
-          two_touch = false;
+      let str = document.getElementById("txt_area").value;
+      document.getElementById("txt_area").value = str.substring(0, str.length - 1);
+      two_touch = false;
     }
     restoreall();
     return true;
@@ -3095,7 +3052,6 @@ function enter_text(event,ch1,ch2,ch3,ch4){
     let button_name = event.target.id
     let current_text = document.getElementById(button_name).firstChild.data;
     let cursor_pos = position_button(event.clientX,event.clientY);
-//     console.log(cursor_pos);
     switch(cursor_pos){
       case 1: document.getElementById("txt_area").value +=  ch1;
               break;
@@ -3115,6 +3071,7 @@ function enter_text(event,ch1,ch2,ch3,ch4){
     var deleteNode = document.getElementsByTagName("ul")[0];
     if(deleteNode) div.removeChild(deleteNode);
 
+    // Get the top three words with highest frequency value
     var t = document.getElementById("txt_area").value;
     if(t) {
       let words = t.split(" ");
@@ -3129,15 +3086,6 @@ function enter_text(event,ch1,ch2,ch3,ch4){
       document.getElementById('sel1').innerText = text1;
       document.getElementById('sel2').innerText = text2;
       document.getElementById('sel3').innerText = text3;
-      // var wordlist = document.createElement('ul');
-      // for(var i = 0; i < res.length; i += 1) {
-      //   var word = document.createElement('li');
-      //   var txt = document.createTextNode(res[i]);
-      //   word.appendChild(txt);
-      //   wordlist.appendChild(word);
-      // }
-
-      // div.appendChild(wordlist);
     } else {
       document.getElementById('sel1').innerText = "";
       document.getElementById('sel2').innerText = "";
