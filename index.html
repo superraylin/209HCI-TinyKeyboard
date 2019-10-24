@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tiny Keyboard</title>
+        <link rel="stylesheet" href="keyboard.css">
+        <script src="keyboard.js"></script>
+
+<!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    </head>
+    <body onload="Init()">
+
+        <h1 style = "position: relative; left:450px; top:0; width: 300px">Tiny Keyboard</h1>
+        <textarea id = "txt_area" autofocus rows="4" cols="60"></textarea>
+<br>
+
+
+
+        <div class="keyboard" >
+            <div class="keyboard_keys" id = "keyboardbox">
+                <img src="cross.png" class="cross">
+                <button type="button" class="keyboard_key" id = "button_abc" draggable = "true">abc</button>
+                <button type="button" class="keyboard_key" id = "button_def" draggable = "true">def</button>
+                <button type="button" class="keyboard_key" id = "button_ghi" draggable = "true">ghi</button>
+                <button type="button" class="keyboard_key" id = "button_jkl" draggable = "true">jkl</button>
+                <button type="button" class="keyboard_key" id = "button_mno"  draggable = "true">mno</button>
+                <button type="button" class="keyboard_key" id = "button_pqr" draggable = "true">pqr</button>
+                <button type="button" class="keyboard_key" id = "button_stu" draggable = "true">stu</button>
+                <button type="button" class="keyboard_key" id = "button_vwx" draggable = "true">vwx</button>
+                <button type="button" class="keyboard_key" id = "button_yz" draggable = "true">yz</button>
+            </div>
+        </div>
+
+        <div class = "autowords">
+            <p id = "sel1" ></p>
+            <p id = "sel2" ></p>
+            <p id = "sel3" ></p>
+        </div>
+
+
+
+    </body>
+</html>
